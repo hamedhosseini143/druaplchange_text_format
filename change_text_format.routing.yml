@@ -1,0 +1,7 @@
+change_text_format.change:
+  path: '/change-text-format'
+  defaults:
+    _title: 'change text format'
+    _controller: '\Drupal\change_text_format\Controller\ChangeTextFormatController'
+  requirements:
+    _permission: 'administer site configuration'
