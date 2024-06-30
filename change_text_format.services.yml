@@ -1,0 +1,4 @@
+services:
+  change_text_format.change:
+    class: Drupal\change_text_format\ChangeTextFormatService
+    arguments: ['@entity_type.manager', '@entity_type.bundle.info', '@entity_field.manager']

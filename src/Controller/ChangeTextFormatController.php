@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Drupal\change_text_format\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -16,16 +15,13 @@ final class ChangeTextFormatController extends ControllerBase {
   /**
    * The controller constructor.
    */
-  public function __construct(
-    private readonly EntityTypeManagerInterface $entityTypeManager,
-  ) {}
+  public function __construct() {}
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): self {
     return new self(
-      $container->get('entity_type.manager'),
     );
   }
 
@@ -33,13 +29,12 @@ final class ChangeTextFormatController extends ControllerBase {
    * Builds the response.
    */
   public function __invoke(): array {
+    $form = $this->formBuilder()
+      ->getForm('Drupal\change_text_format\Form\ChangeTextFormatForm');
 
-    $build['content'] = [
-      '#type' => 'item',
-      '#markup' => $this->t('It works!'),
+    return [
+      'form' => $form,
     ];
-
-    return $build;
   }
 
 }
