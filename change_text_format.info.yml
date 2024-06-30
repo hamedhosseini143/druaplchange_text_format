@@ -3,7 +3,5 @@ type: module
 core_version_requirement: '^9.4 || ^10'
 package: custom
 dependencies:
-  - node
-  - text
-  - user
-  - views
+  - drupal:node
+  - drupal:views
